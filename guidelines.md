@@ -16,6 +16,6 @@ That's about it for requirements, but chances are your app will require more fea
 - Client-side UI frameworks (Angular, React, Ember, etc.)
 - AJAX
 
-The [Resources][resources.md] file contains links to several resources that may be helpful when building your application.
+The [Resources](resources.md) file contains links to several resources that may be helpful when building your application.
 
 The due date for the final project is midnight, December 16. Please prioritize so that your application contains all of the critical features by that time, and work on the optional functionality after the core ones are completed.
