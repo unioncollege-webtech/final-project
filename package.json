@@ -1,0 +1,27 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "I am going to create a To Do list where you can add items to a list. You will also be able to search for a to do item. You will",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "handlebars": "^4.0.5",
+    "hbs": "^4.0.0",
+    "nodemon": "^1.8.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calebwr/final-project.git"
+  },
+  "author": "Caleb Wright",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calebwr/final-project/issues"
+  },
+  "homepage": "https://github.com/calebwr/final-project#readme"
+}
