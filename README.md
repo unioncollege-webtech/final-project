@@ -1,9 +1,9 @@
-# Final Project
+# Final UCIM (Union College Intramurals Manager)
 
-Design and build a <abbr title="Create, Read, Update, Delete">CRUD</abbr> application which provides *some* useful benefit.
+The student worker that manages intramurals for Union currently uses excel sheets to keep track of the games, stats, and things pertaining to the intramurals program. My goal is to create a web application using Node.js and Mongoose (Mongodb) to allow for easier management of the intramurals program.
 
 
 Description
 -----------
 
-Read and review the [Final Project Guidelines](guidelines.md), then fork this repository and replace this README.md with a description of your application. An example project description is in [README_EXAMPLE.md](README_EXAMPLE.md)
+UCIM uses a Mongo database to keep track of players, teams, and games for the intramurals program.
