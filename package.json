@@ -4,6 +4,7 @@
   "description": "I am going to create a To Do list where you can add items to a list. You will also be able to search for a to do item. You will",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "handlebars": "^4.0.5",
     "hbs": "^4.0.0",

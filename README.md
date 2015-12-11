@@ -10,18 +10,19 @@ Each to do item will have following properties:
 - <li> - each item will be in a li element
 - id - a string that uniquely identifies an item
 
-possible future properties:
+Possible future properties:
 
 - authentication - have users log in using google
 - due date - be able to set a due date when the item needs to be done
 - database - use a database to store the information in
 - folders - be able to create folders and add to do items in different folders
+- users can search for a to do item
 
 Features
 ---------
 
-- Users can create, view, update, and delete to do items
-- users can search for a to do item
+- Users can create, read, update, and delete to do items
+
 
 Approach
 ---------

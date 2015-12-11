@@ -1,0 +1,26 @@
+body{
+    text-align: center;
+    max-width: 33em;
+    margin: auto;
+}
+
+#to-do-items{
+    text-align: left;
+}
+.tagline{
+    text-align: left;
+}
+/*main{
+    /*background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc_gczJjgQ0o2LEmvfO3_758fr6-4r85kSGG3UAdroHuFHubn51A');*/
+    /*background-image: url('http://s22.postimg.org/i83b7ztch/notepad_page.png');*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: 30em;*/
+/*}*/
+/*ul {*/
+/*    background: #85836E;*/
+/*    padding: 12px;*/
+/*}*/
+/*ul li {*/
+/*    background: #FAF17D;*/
+/*    margin: 5px;*/
+/*}*/
