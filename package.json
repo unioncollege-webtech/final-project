@@ -4,6 +4,7 @@
   "description": "Design and build a <abbr title=\"Create, Read, Update, Delete\">CRUD</abbr> application which provides *some* useful benefit.",
   "main": "Dogs.js",
   "dependencies": {
+    "express": "^4.13.3",
     "handlebars": "^4.0.5"
   },
   "devDependencies": {},
