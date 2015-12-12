@@ -1,0 +1,23 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Design and build a <abbr title=\"Create, Read, Update, Delete\">CRUD</abbr> application which provides *some* useful benefit.",
+  "main": "Dogs.js",
+  "dependencies": {
+    "handlebars": "^4.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdtorres2/final-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdtorres2/final-project/issues"
+  },
+  "homepage": "https://github.com/sdtorres2/final-project#readme"
+}
