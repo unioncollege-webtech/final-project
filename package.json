@@ -5,6 +5,7 @@
   "main": "Dogs.js",
   "dependencies": {
     "express": "^4.13.3",
+    "express3-handlebars": "^0.5.2",
     "handlebars": "^4.0.5"
   },
   "devDependencies": {},
