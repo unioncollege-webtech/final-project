@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>{{site.name}}</title>
+	<link rel="stylesheet" href="/style.css">
+	<meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+	<header>
+		<h1><a href="/">
+			<heading>{{site.name}}</heading>
+		</a></h1>
+
+	</header>
+	<main>
+		{{{ body }}}
+	</main>
+	<footer>
+		<p><small><a href="{{site.source}}">View source code on GitHub</a></small></p>
+		{{#site.author}}
+		<p><small>Page created by {{firstname}} {{lastname}}</small></p>
+		{{/site.author}}
+	</footer>
+</body>
+
+</html>
