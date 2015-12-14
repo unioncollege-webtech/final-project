@@ -8,20 +8,28 @@ var bodyParser = require('body-parser');
 var compress = require('compression');
 var methodOverride = require('method-override');
 var exphbs  = require('express-handlebars');
+var HandlebarsIntl = require('handlebars-intl');
+
+
 
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
   
+  var hbs = exphbs.create({extname: '.hbs'});
+  HandlebarsIntl.registerWith(hbs.handlebars);
+  console.warn(config.root + '/app/views/layouts/')
   app.engine('handlebars', exphbs({
-    layoutsDir: config.root + '/app/views/layouts/',
+    layoutsDir: config.root +'/app/views/layouts/',
     defaultLayout: 'main',
-    partialsDir: [config.root + '/app/views/partials/']
+    partialsDir: config.root + '/app/views/partials/',
+    extname: ".handlebars"
   }));
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'handlebars');
-
+  
+  console.log("hello")
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
   app.use(logger('dev'));
   app.use(bodyParser.json());

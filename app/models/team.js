@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var playerSchema = require("../models/player").schema
 var Schema = mongoose.Schema;
 
 var teamSchema = new Schema({

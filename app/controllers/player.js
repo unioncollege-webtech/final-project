@@ -22,11 +22,10 @@ router.route('/')
             });
     })
     .post(function(req, res, next) {
-        var promise = Player.remove({
+        Player.remove({
             _id: req.body._id
-        });
-
-        promise.then(function(players) {
+        })
+        .then(function(players) {
                 res.redirect('/player');
             })
             .catch(function(err) {
