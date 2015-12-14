@@ -33,6 +33,6 @@ Routes
 -------
 
 - / - The 'index' route. Show a list of the to do items
-
-
-Additional routes will be added as more features are developed.
+- /delete - deletes the to do item
+- /edit - edits a to do item
+- /save - saves the toDoList array to storage.json

@@ -4,23 +4,34 @@ body{
     margin: auto;
 }
 
+.update-list{
+    display: flex;
+    flex-direction: column;
+}
+.update-item{
+    margin: 5px;
+}
+.edit-btn-group{
+    display:flex;
+}
+.edit-btn{
+    flex-grow: 1;
+    margin: 5px;
+}
+
 #to-do-items{
     text-align: left;
 }
 .tagline{
     text-align: left;
 }
-/*main{
-    /*background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc_gczJjgQ0o2LEmvfO3_758fr6-4r85kSGG3UAdroHuFHubn51A');*/
-    /*background-image: url('http://s22.postimg.org/i83b7ztch/notepad_page.png');*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: 30em;*/
-/*}*/
-/*ul {*/
-/*    background: #85836E;*/
-/*    padding: 12px;*/
-/*}*/
-/*ul li {*/
-/*    background: #FAF17D;*/
-/*    margin: 5px;*/
-/*}*/
+li{
+    padding: 1em;
+}
+form .delete-form-button{
+    text-align: left;
+}
+.btn btn-danger btn-xs{
+    max-width: 10px;
+    max-height: 12px;
+}

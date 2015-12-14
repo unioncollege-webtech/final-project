@@ -1,36 +1,32 @@
 {{! submit a to do item. }}
 
-<form method="POST">
-		<label>Post a to do item:
-			<input name="title" placeholder="To Do Item" autofocus>
-		</label>
-		<button type="submit">submit</button>
-</form>
-
-{{#each items}}
-  <!-- Small modal that deletes a to do item-->
-  <form method="POST" action="/delete">
-    <input type="hidden" value="{{title}}" name="title" />
-    <button type="submit" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete">
-      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-    </button>
-  </form>
-{{/each}}
+<form class='form-inline' method="POST">
+  <div class='form-group'>
+    <label for='new'>Post a to do item: </label>
+		<input class="form-control" id='new' type='text' name="title" placeholder="To Do Item" autofocus>
+  </div>
+	<button type="submit" class="btn btn-default">Submit</button>
+</form><br>
 
 <div id="to-do-items">
-  <ul>
-      {{#each items}}
-      <li>{{title}}</li>
-      {{/each}}
-  </ul>
+  <table class='table table-hover'>
+    {{#each items}}
+      <tr>
+        <td>
+          <form id="delete-form-button" method="POST" action="/delete">
+            <span class='glyphicon glyphicon-pushpin'></span> {{title}}
+            <input type="hidden" value="{{title}}" name="title" />
+            <button type="submit" class="btn btn-danger btn-xs pull-right" data-toggle="modal" data-target="#delete">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </table>
 </div>
 
-
-{{! form method for a user to be able to search for a to do item. }}
-
-{{!--<form method="POST">--}}
-{{!--		<label>Search for a to do item:--}}
-{{!--			<input name="title" placeholder="Search">--}}
-{{!--		</label>--}}
-{{!--		<button type="submit">submit</button>--}}
-{{!--</form>--}}
+<form class="form-inline" method='post' action='/save'>
+  <button class='btn btn-success edit-btn' type='submit'>Save to storage</button>
+  <a class='btn btn-default edit-btn' href='/edit'>Edit</a>
+</form>

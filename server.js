@@ -1,4 +1,6 @@
 var express = require('express');
+var fs = require('fs');
+var toDoList = require('./storage.json');
 
 var app = express();
 var bodyparser = require('body-parser');
@@ -11,44 +13,54 @@ app.use(bodyparser.urlencoded({
   extended: false
 }));
 
-var toDoList = [];
-
-
 app.get('/', function(req, res) {
   res.render('index', {
     title: "To Do's",
-    items: toDoList
+    items: toDoList.list
+  });
+});
+
+app.get('/edit', function(req, res) {
+  res.render('edit', {
+    title: "To Do's",
+    items: toDoList.list
   });
 });
 
 app.post('/', function(req, res){
-    toDoList.push({
+    toDoList.list.push({
         title: req.body.title
     });
     res.redirect('/');
 });
 
 app.post('/delete', function(req, res){
-    for(var i=toDoList.length-1; i>-1; i--){
-      if(req.body.title== toDoList[i].title){
-        toDoList.splice(i, 1);
+    for(var i=toDoList.list.length-1; i>-1; i--){
+      if(req.body.title== toDoList.list[i].title){
+        toDoList.list.splice(i, 1);
       }
     }
     res.redirect('/');
 });
 
-app.post('/update', function(req, res) {
-    
-})
+app.post('/edit', function(req, res) {
+  toDoList.list = [];
+  req.body.items.forEach(function(item){
+    toDoList.list.push({
+        title: item
+    });
+  });
+  res.redirect('/');
+});
 
-// app.post('toDoItem', function(req, res) {
-//     toDoList.push({
-//         title: req.body.title
-//     });
-//     res.render('toDoItem', {
-//         title: "search",
-//         items: "toDoList"
-//     });
+app.post('/save', function(req, res){
+  fs.writeFile('./storage.json', JSON.stringify(toDoList), 'utf8', function(err) {
+    if (err) {
+      console.log(err);
+    }
+    res.redirect('/');
+  });
+});
 
 app.listen(8080);
 
