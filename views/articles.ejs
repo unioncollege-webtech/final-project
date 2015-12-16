@@ -1,0 +1,31 @@
+<%- include layouts/header %>
+
+    <a class="success button" href="../articles/add">Add an article</a>
+
+    <% if(data.length) {
+        for (var i = 0; i < data.length; i++) { %>
+    
+    <div class="row">
+        <div class="medium-12 columns">
+            <h3><%=data[i].title %></h3>
+            <span class="author">By: <%=data[i].author %></span>
+            <article><%=data[i].body %></article>
+            <div class="small button-group">
+                <a class="button" href="../articles/edit/<%=data[i].id%>">Edit</a>
+                <a class="alert button" href="../articles/delete/<%=data[i].id%>">Delete</a>
+            </div>
+        </div>
+    </div>
+    
+    <br />
+    
+    <% }
+    } else { %>
+        <div class="row">
+            <div class="medium-12 coluns">
+                There are no articles here!
+            </div>
+        </div>
+    <% } %>
+    
+<%- include layouts/footer %>

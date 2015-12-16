@@ -1,0 +1,36 @@
+<%- include layouts/header.ejs %>
+        
+    <form method="post" action="/articles/edit/<%=data[0].id %>">
+        <div class="row">
+            <div class="medium-12 columns">
+                <label>Author
+                    <input type="text" name="author" value="<%=data[0].author %>">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-12 columns">
+                <label>Title
+                    <input type="text" name="title" placeholder="Enter a title" value="<%=data[0].title %>">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-12 columns">
+                <label>
+                    Body
+                    <textarea name="body" placeholder="Add your article's text here"><%=data[0].body %></textarea>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-6 columns">
+                <input type="submit" name="submit" value="Save" class="success button">
+            </div>
+            <div class="medium-6 columns">
+                <input type="button" name="cancel" value="Cancel" class="warning button cancel-button">
+            </div>
+        </div>
+    </form>
+        
+<%- include layouts/footer.ejs %>
