@@ -33,8 +33,12 @@
 				<td>{{lastname}}</td>
 				<td>{{email}}</td>
 				<td>{{phoneNumber}}</td>
-				<td><a href="/delete">Delete</a></td>
-				
+				<td>
+					<form method="POST" action="/delete">
+						<input type="hidden" value="{{email}}" name="emailAddress"/>
+						<button type="submit">Delete</button>
+					</form>
+				</td>
 			</tr>
 			{{/each}}
 		</tbody>

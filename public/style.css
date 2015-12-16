@@ -39,7 +39,7 @@ button {
     margin-top: 5px;
 }
 
-.data td {
+.data tr {
     border-bottom-width: 1px;
     border-bottom-style: solid;
 }

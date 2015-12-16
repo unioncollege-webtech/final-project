@@ -31,9 +31,13 @@ app.get('/', function(req, res) {
 });
 
 
-app.get('/delete', function(req, res) {
+app.post('/delete', function(req, res) {
   // Unsure how to delete specific item
-  contactList.splice(req.body.id, 1);
+  for (var i = contactList.length-1; i > -1; i--) {
+    if (req.body.emailAddress == contactList[i].email) {
+      contactList.splice(i, 1);
+    }
+  }
   res.redirect('/');
 });
 
