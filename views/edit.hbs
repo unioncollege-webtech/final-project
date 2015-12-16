@@ -1,0 +1,13 @@
+<div id="to-do-items">
+  <form id="update-form" class="form-inline" method="POST" action="/edit">
+    <div class='update-list'>
+      {{#each items}}
+        <input class="form-control update-item" value="{{title}}" name="items" />
+      {{/each}}
+    </div>
+    <div class='edit-btn-group'>
+      <button class='btn btn-success edit-btn' type='submit'>Update</button>
+      <a href='/' class='btn btn-default edit-btn'>Cancel</a>
+    </div>
+  </form>
+</div>

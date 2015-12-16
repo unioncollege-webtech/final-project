@@ -1,0 +1,8 @@
+{{! form method for a user to be able to search for a to do item. }}
+
+<form method="POST">
+		<label>Search for a to do item:
+			<input name="title" placeholder="Search">
+		</label>
+		<button type="submit">submit</button>
+</form>
