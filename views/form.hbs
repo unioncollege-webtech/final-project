@@ -6,19 +6,19 @@
 
 <section class='gallery'>
     <div class="content">
-    <ul>
-        {{#each images}}
-        <li><img src="/uploads/images/{{filename}}" alt=''></li>
+            {{#each images}}
+            
 
-        <form method='POST' action='/images'>
-            <input type='hidden' name='file' value='{{filename}}'>
-            <button id='delete' type='submit'>Delete</button>
-        </form>
-        {{/each}}
+            <form method='POST' action='/images'>
+                <div>
+                <img src="/uploads/images/{{filename}}" alt=''>
+                <input type='hidden' name='file' value='{{filename}}'>
+                <button id='delete' type='submit'>Delete</button>
+                </div>
+            </form>
+            {{/each}}
 
-
-    </ul>
-</div>
+    </div>
 
 </section>
 
