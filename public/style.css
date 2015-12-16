@@ -1,0 +1,57 @@
+body {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
+    font-size: 14px;
+    max-width: 50em;
+    margin-left: 230px;
+    padding: 1em;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+input {
+    text-align: center;
+    padding: 5px;
+    padding-left: 7px;
+    margin-top: 5px;
+    border-radius: 15px 15px 15px 15px;
+}
+
+td {
+    width: 300px;
+    text-align: center;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+th {
+    text-align: center;
+    padding-right: 15px;
+}
+
+button {
+    margin-left: 6px;
+    margin-top: 5px;
+}
+
+.data tr {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.data button {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.data a {
+    text-align: center;
+    margin-left: 10px;
+}

@@ -37,3 +37,7 @@ Routes
 - /bookmarks/delete - Handle requests to delete an item. Show a confirmation message and redirect to the home page.
 
 Additional routes will be added as more features are developed.
+
+
+
+
