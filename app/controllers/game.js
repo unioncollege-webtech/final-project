@@ -10,36 +10,28 @@ module.exports = function(app) {
 
 router.route('/')
     .get(function(req, res, next) {
-        Game.find({
-                section: 'Coed'
-            })
-            .populate('winner')
-            .populate('loser')
+        Game.aggregate([{
+                $sort: {
+                    Name: 1
+                }
+            }, {
+                $group: {
+                    _id: "$section",
+                    games: {
+                        $push: "$$ROOT"
+                    }
+                }
+            }])
             .exec()
-            .then(function(coed) {
-                return Game.find({section: 'Guys'})
-                .populate('winner')
-                .populate('loser')
-                .exec()
-                .then(function(guys){
-                    return [coed, guys];
+            .then(function(sections) {
+                return Team.populate(sections, {
+                    "path": "games.loser games.winner"
                 })
             })
-            .then(function(games){
-                return Game.find({section: 'Girls'})
-                .populate('winner')
-                .populate('loser')
-                .exec()
-                .then(function(girls){
-                    return [games[0], games[1], girls];
-                })
-            })
-            .then(function(games){
+            .then(function(sections) {
                 res.render('game/index', {
                     title: 'Games',
-                    coed: games[0],
-                    guys: games[1],
-                    girls: games[2]
+                    sections: sections
                 })
             })
             .catch(function(err) {
@@ -119,37 +111,25 @@ router.route('/addGame')
             })
             .exec()
             .then(function(teams) {
-                for (var i in teams) {
-                    console.log(teams[i])
-                    if (teams[i]._id == req.body.winner) {
-                        Team.findOne({
-                            _id: req.body.winner
-                        }).exec()
-                        .then(function(doc) {
-                            console.log("alsfj;sklfj")
-                            doc.wins++
-                                doc.save()
-                        })
-                    }
-                    else {
-                        Team.findOne({
-                            _id: req.body.loser
-                        }, function(err, doc) {
-                            if (err) throw err
-                            doc.losses++
-                                doc.save()
-                        })
-                    }
-                }
-                
+                Team.findOne({ _id: req.body.winner }).exec()
+                .then(function(team) {
+                    team.wins++
+                    return team.save();
+                }).then(function(){
+                    return Team.findOne({ _id: req.body.loser }).exec()
+                })
+                .then(function(team) { 
+                    team.losses++
+                    team.save()
+                })
                 new Game({
-                        gameName: req.body.gameName,
-                        winner: req.body.winner,
-                        winnerPoints: req.body.winnerPoints,
-                        loser: req.body.loser,
-                        loserPoints: req.body.loserPoints,
-                        section: req.body.section,
-                        date: new Date(req.body.date + ' ' + req.body.time)
+                    gameName: req.body.gameName,
+                    winner: req.body.winner,
+                    winnerPoints: req.body.winnerPoints,
+                    loser: req.body.loser,
+                    loserPoints: req.body.loserPoints,
+                    section: req.body.section,
+                    date: new Date(req.body.date + ' ' + req.body.time)
                     }).save()
                     .then(function() {
                         res.redirect('/game');
@@ -157,8 +137,8 @@ router.route('/addGame')
                     .catch(function(err) {
                         next(err)
                     })
-            })
-            .catch(function(err) {
-                next(err)
-            })
+                })
+                .catch(function(err) {
+                    next(err)
+                })
     })

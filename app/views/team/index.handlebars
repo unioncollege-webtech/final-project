@@ -3,8 +3,8 @@
     <button>Add New Team</button>
 </form>
 
-{{#if coed}}
-<h3>Coed</h3>
+{{#each sections}}
+<h3>{{_id}}</h3>
 <table>
     <thead>
         <tr>
@@ -14,10 +14,10 @@
     </thead>
 
     <tbody>
-        {{#each coed}}
+        {{#each teams}}
         <form method="GET" action="/team/editTeam">
             <tr>
-                <td>{{teamName}}</td>
+                <td>{{Name}}</td>
                 <td>
                     <input type=hidden name="_id" value="{{_id}}" />
                     <button class="button--xsm">edit</button>
@@ -27,56 +27,4 @@
         {{/each}}
     </tbody>
 </table>
-{{/if}}
-
-{{#if guys}}
-<h3>Guys</h3>
-<table>
-    <thead>
-        <tr>
-            <th scope="col">Team</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        {{#each guys}}
-        <form method="GET" action="/editteam">
-            <tr>
-                <td>{{teamName}}</td>
-                <td>
-                    <input type=hidden name="_id" value="{{_id}}" />
-                    <button class="button--xsm">edit</button>
-                </td>
-            </tr>
-        </form>
-        {{/each}}
-    </tbody>
-</table>
-{{/if}}
-
-{{#if girls}}
-<h3>Girls</h3>
-<table>
-    <thead>
-        <tr>
-            <th scope="col">Team</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        {{#each girls}}
-        <form method="GET" action="/editteam">
-            <tr>
-                <td>{{teamName}}</td>
-                <td>
-                    <input type=hidden name="_id" value="{{_id}}" />
-                    <button class="button--xsm">edit</button>
-                </td>
-            </tr>
-        </form>
-        {{/each}}
-    </tbody>
-</table>
-{{/if}}
+{{/each}}

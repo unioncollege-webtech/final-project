@@ -1,5 +1,6 @@
 var express = require('express'),
     router = express.Router(),
+    util = require('util'),
     mongoose = require('mongoose'),
     Team = mongoose.model('Team'),
     Player = mongoose.model('Player');
@@ -10,36 +11,17 @@ module.exports = function(app) {
 
 router.route('/')
     .get(function(req, res, next) {
-        Team.find({ section: 'Coed'})
-            .sort({ teamName: '1'})
+            Team.aggregate([{$sort: { Name: 1}},{ $group: { _id: "$section", teams: { $push: "$$ROOT" } } }] )
             .exec()
-            .then(function(coed) {
-                    return Team.find({ section: 'Guys' })
-                    .sort({ teamName: '1' })
-                    .exec()
-                    .then(function(guys) {
-                        return [coed, guys]
-                    })
-            })
-            .then(function(teams) {
-                return Team.find({ section: 'Girls' })
-                .sort({ teamName: '1' })
-                .exec()
-                .then(function(girls) {
-                    return [teams[0], teams[1], girls]
-                })
-            })
-            .then(function(teams) {
+            .then(function(sections){
                 res.render('team/index', {
-                    title: 'Teams',
-                    coed: teams[0],
-                    guys: teams[1],
-                    girls: teams[2]
-                })
+                     title: 'Teams',
+                     sections: sections
+                 })
             })
             .catch(function(err) {
-                next(err)
-            })
+                next(err);
+            });
     })
     
 router.route("/addTeam")
@@ -50,7 +32,7 @@ router.route("/addTeam")
     })
     .post(function(req, res, next) {
         return new Team({
-            teamName: req.body.teamName,
+            Name: req.body.teamName,
             wins: 0,
             losses: 0,
             members: [],
@@ -85,29 +67,13 @@ router.route("/editTeam")
                 _id: req.body.teamId
             }).populate('members').exec()
             .then(function(team) {
-                
-                
-                var delmembers = req.body['members']
-                console.log(team.members)
-                if (delmembers != null) {
-                    if (delmembers.constructor === Array) {
-                        delmembers.map(function(memberId) {
-                            team.members.pull(memberId)
-                            })
-                    }
-                    else {
-                        team.members.id(delmembers).remove()
-                    }
-                }
                 team.teamName = req.body.teamName;
+
+                team.members.pull.apply(team.members,req.body.members)
+                
                 return team.save()
-                //TODO add sessions
                     .then(function() {
-                        res.writeHead(302, {
-                            'Location': '/team/editteam?_id=' + req.body.teamId,
-                            _id: req.body.teamId
-                        })
-                        res.end()
+                        res.redirect(util.format('%s?%s=%s','/team/editTeam','_id',req.query._id));
                     })
             })
             .catch(function(err) {
@@ -139,26 +105,19 @@ router.route('/addPlayer')
             })
     })
     .post(function(req, res, next) {
-
+        
         Team.findOne({
                 _id: req.body.teamId
             }).exec()
             .then(function(team) {
-
-                req.body['players'].map(function(id) {
-                    team.members.push(id)
-                })
+                
+                team.members.push.apply(team.members, req.body.players)
 
                 return team.save()
             })
             
-            //TODO: add sessions
             .then(function() {
-                res.writeHead(302, {
-                    'Location': '/team/editteam?_id=' + req.body.teamId,
-                    _id: req.body.teamId
-                })
-                res.end()
+                res.redirect(util.format('%s?%s=%s','/team/editTeam','_id',req.body.teamId));
             })
             .catch(function(err) {
                 next(err);

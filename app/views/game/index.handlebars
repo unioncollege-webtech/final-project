@@ -5,8 +5,8 @@
     <button name="section" value="Coed">Add Coed Game</button>
 </form>
 
-{{#if coed}}
-<h3>Coed</h3>
+{{#each sections}}
+<h3>{{_id}}</h3>
 <table>
     <thead>
         <tr>
@@ -20,7 +20,7 @@
     </thead>
 
     <tbody>
-        {{#each coed}}
+        {{#each games}}
         <form method="POST">
             <tr>
                 <td><button class="button--xsm">delete</button></td>
@@ -34,88 +34,12 @@
                 </td>
                 <td>
                     <input type=hidden name="winnerId" value="{{winner._id}}" />
-                    {{winner.teamName}}</td>
-                <td><input type=hidden name="loserId" value="{{loser._id}}" />{{loser.teamName}}</td>
+                    {{winner.Name}}</td>
+                <td><input type=hidden name="loserId" value="{{loser._id}}" />{{loser.Name}}</td>
                 <td>{{winnerPoints}}-{{loserPoints}}</td>
             </tr>
         </form>
         {{/each}}
     </tbody>
 </table>
-{{/if}}
-
-{{#if guys}}
-<h3>Guys</h3>
-<table>
-    <thead>
-        <tr>
-            <th scope="col"></th>
-            <th scope="col">Game</th>
-            <th scope="col">Date Played</th>
-            <th scope="col">Winner</th>
-            <th scope="col">Loser</th>
-            <th scope="col">Score</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        {{#each guys}}
-        <form method="POST">
-            <tr>
-                <td><button class="button--xsm">delete</button></td>
-                <td>
-                    <input type=hidden name="gameId" value="{{_id}}" /> {{gameName}}
-                </td>
-                <td>
-                    {{#if date}}
-                    {{formatDate date day="numeric" month="long" year="numeric"}}
-                    {{/if}}
-                </td>
-                <td><input type=hidden name="winnerId" value="{{winner._id}}" />{{winner.teamName}}</td>
-                <td><input type=hidden name="loserId" value="{{loser._id}}" />{{loser.teamName}}</td>
-                <td>{{winnerPoints}}-{{loserPoints}}</td>
-            </tr>
-        </form>
-        {{/each}}
-    </tbody>
-</table>
-{{/if}}
-
-{{#if girls}}
-<h3>Girls</h3>
-<table>
-    <thead>
-        <tr>
-            <th scope="col"></th>
-            <th scope="col">Game</th>
-            <th scope="col">Date Played</th>
-            <th scope="col">Winner</th>
-            <th scope="col">Loser</th>
-            <th scope="col">Score</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        {{#each girls}}
-        <form method="POST">
-            <tr>
-                <td><button class="button--xsm">delete</button></td>
-                <td>
-                    <input type=hidden name="gameId" value="{{_id}}" /> {{gameName}}
-                </td>
-                <td>
-                    {{#if date}}
-                    {{formatDate date day="numeric" month="long" year="numeric"}}
-                    {{/if}}
-                </td>
-                <td>
-                    <input type=hidden name="winnerId" value="{{winner._id}}" />
-                    {{winner.teamName}}</td>
-                <td><input type=hidden name="loserId" value="{{loser._id}}" />{{loser.teamName}}</td>
-                <td>{{winnerPoints}}-{{loserPoints}}</td>
-            </tr>
-        </form>
-        {{/each}}
-    </tbody>
-</table>
-{{/if}}
+{{/each}}
