@@ -35,3 +35,8 @@ Frontend Frameworks
 - [Font Awesome](http://fontawesome.io/)
 - [Bootstrap](http://getbootstrap.com/getting-started/#whats-included)
 - [Vue.js](http://vuejs.org/v2/guide/)
+
+Advanced JavaScript
+-------------------
+- [ES6](https://github.com/getify/You-Dont-Know-JS/tree/master/es6%20%26%20beyond#readme) 
+- [Functional Programming](https://github.com/getify/functional-light-js#book)
