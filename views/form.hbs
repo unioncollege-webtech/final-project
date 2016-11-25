@@ -1,0 +1,34 @@
+<head>
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<h1>{{title}}</h1>
+
+<section class='gallery'>
+    <div class="content">
+            {{#each images}}
+            
+
+            <form method='POST' action='/images'>
+                <div>
+                <img src="/uploads/images/{{filename}}" alt=''>
+                <input type='hidden' name='file' value='{{filename}}'>
+                <button id='delete' type='submit'>Delete</button>
+                </div>
+            </form>
+            {{/each}}
+
+    </div>
+
+</section>
+
+<section>
+    <form method="POST" action='/' enctype="multipart/form-data">
+        <input name="Image Name" placeholder="Image Name"></input>
+        <input name="Catagory" placeholder="Catagory"></input>
+        <input type='file' multiple='multiple' name='upl'>
+        <button type="submit">Submit!</button>
+    </form>
+
+    <h2>{{message}}</h2>
+</section>
