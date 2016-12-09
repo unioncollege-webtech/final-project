@@ -1,0 +1,19 @@
+{
+  "name": "ace-order-app",
+  "version": "1.0.0",
+  "description": "App for ACE members to order things, and for ACE admins to create things to order",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greenitthe/final-project.git"
+  },
+  "author": "Greenitthe (James Clague)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greenitthe/final-project/issues"
+  },
+  "homepage": "https://github.com/greenitthe/final-project#readme"
+}
