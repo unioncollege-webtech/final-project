@@ -14,16 +14,16 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  background-color: #38abff;
+  background-color: #2f2f2f;
 }
 
 main {
-  box-shadow: inset 12px 0 15px -4px #34abff, inset -12px 0 8px -4px #34abff;
-	-moz-box-shadow: inset 12px 0 15px -4px #34abff, inset -12px 0 8px -4px #34abff;
-	-webkit-box-shadow: inset 12px 0 15px -4px #34abff, inset -12px 0 8px -4px #34abff;
-	-o-box-shadow: inset 12px 0 15px -4px #34abff, inset -12px 0 8px -4px #34abff;
-  background-color: #ffffff;
-  color: #38abff;
+  box-shadow: inset 12px 0 15px -4px #2f2f2f, inset -12px 0 8px -4px #2f2f2f;
+	-moz-box-shadow: inset 12px 0 15px -4px #2f2f2f, inset -12px 0 8px -4px #2f2f2f;
+	-webkit-box-shadow: inset 12px 0 15px -4px #2f2f2f, inset -12px 0 8px -4px #2f2f2f;
+	-o-box-shadow: inset 12px 0 15px -4px #2f2f2f, inset -12px 0 8px -4px #2f2f2f;
+  background-color: #4f4f4f;
+  color: #4acd2f;
   padding: 2em;
   font-family: Verdana;
   font-size: 14px;
