@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/greenitthe/final-project/issues"
   },
-  "homepage": "https://github.com/greenitthe/final-project#readme"
+  "homepage": "https://github.com/greenitthe/final-project#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "redis": "^2.6.3",
+    "socket.io": "^1.7.1"
+  }
 }
