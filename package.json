@@ -18,6 +18,7 @@
   "homepage": "https://github.com/greenitthe/final-project#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "pug": "^2.0.0-beta6",
     "redis": "^2.6.3",
     "socket.io": "^1.7.1"
   }

@@ -13,6 +13,9 @@ redisClient.on("error", function (err) {
   console.log("Error " + err);
 });
 
+//Templating
+app.set('view engine', 'pug');
+
 // Serve files in the 'public' directory with Express's built-in static file server
 app.use(express.static('public'));
 
