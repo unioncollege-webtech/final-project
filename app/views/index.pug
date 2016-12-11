@@ -3,12 +3,45 @@ html
   head
     title="Order - ACE Order Center"
     link(rel="stylesheet" href="/styles.css")
-    meta(name="viewport" content="width=device-width")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     script(src="/dist/socket.io.js")
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js")
     script(src="/clientScript.js")
   body
     Main
       div#headingStuff
-        h1="A.C.E. Order Center"
-      
+        h1="Trumps - The Game"
+      nav#navbar
+        ul
+          li
+            a(href="#").active
+              ="The Mines"
+          li
+            a(href="#")
+              ="The Village"
+          li
+            a(href="#")
+              ="The City"
+          li
+            a(href="#")
+              ="The Whitehouse"
+          li
+            a(href="#")
+              ="The Situation Room"
+      div#game
+        div#theMines.area
+          h2="The Mines"
+          div.modulesContainer
+            div#hatchery.module
+              h3="Trump Hatchery"
+              p="Number of Trumps:"
+            div#amMineInc.module
+              h3="AmMine Inc."
+            div#trumpcoTacoFarm.module
+              h3="TrumpCo TaCo Farm"
+            div#trumpetManufactury.module
+              h3="Trumpet Manufactory"
+        div#theVillage.area.hidden
+        div#theCity.area.hidden
+        div#theWhitehouse.area.hidden
+        div#theSituationRoom.area.hidden

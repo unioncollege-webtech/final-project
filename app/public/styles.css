@@ -1,3 +1,38 @@
+/** Colors **/
+body {
+  background-color: #2f2f2f;
+}
+
+main {
+  background-color: #4f4f4f;
+  color: #4acd2f;
+}
+
+#navbar {
+  background-color: #2f2f2f;
+}
+
+#navbar a {
+  color: #4acd2f;
+}
+
+#navbar a:hover {
+  background-color: #1f1f1f;
+}
+
+#navbar .active {
+  background-color: #1f1f1f;
+}
+
+.area {
+  background-color: #5d5d5d;
+}
+
+.module {
+  background-color: #6f6f6f;
+}
+
+/* Layout */
 * {
   padding: 0;
   margin: 0;
@@ -14,27 +49,109 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  background-color: #2f2f2f;
 }
 
 main {
-  box-shadow: inset 12px 0 15px -4px #2f2f2f, inset -12px 0 8px -4px #2f2f2f;
-	-moz-box-shadow: inset 12px 0 15px -4px #2f2f2f, inset -12px 0 8px -4px #2f2f2f;
-	-webkit-box-shadow: inset 12px 0 15px -4px #2f2f2f, inset -12px 0 8px -4px #2f2f2f;
-	-o-box-shadow: inset 12px 0 15px -4px #2f2f2f, inset -12px 0 8px -4px #2f2f2f;
-  background-color: #4f4f4f;
-  color: #4acd2f;
-  padding: 2em;
+  padding: 1.5em;
   font-family: Verdana;
   font-size: 14px;
   flex-direction: column;
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 85vw;
 }
 
 #headingStuff {
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding: 1rem;
+}
+
+#navbar {
+  list-style-type: none;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#navbar ul {
+  list-style: none;
+
+  margin: 0;
+  padding: 0 2.8vw;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: stretch;
+}
+
+#navbar li {
+  display: inline-flex;
+}
+
+#navbar a {
+  align-items: flex-start;
+
+  padding: 1rem 1rem;
+
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+.hidden {
+  display:none !important;
+}
+
+#game {
+  display: flex;
+
+  padding: 1rem;
+
+  font-size: 10px;
+}
+
+.area {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.4rem;
+}
+
+.modulesContainer {
+  display: flex;
+  flex-direction: row;
+
+  margin: 0.2rem;
+  flex-wrap: wrap;
+}
+
+.module {
+  padding: 1%;
+  margin: 1%;
+  width: 46%;
+}
+
+.module p {
+  padding-left: 0.5rem;
+}
+
+@media (max-width: 961px) {
+  #navbar {
+    padding: 0 0 0rem 0;
+  }
+  #navbar a {
+    font-size: 10px;
+    padding: 0.4rem 0.3rem;
+  }
+  #navbar ul {
+    padding: 0 1.4vw;
+  }
 }

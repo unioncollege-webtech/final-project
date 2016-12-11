@@ -1,7 +1,7 @@
 {
-  "name": "ace-order-app",
+  "name": "trumps-game",
   "version": "1.0.0",
-  "description": "App for ACE members to order things, and for ACE admins to create things to order",
+  "description": "Game about farming Trumps",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
