@@ -32,6 +32,21 @@ main {
   background-color: #6f6f6f;
 }
 
+.status {
+  border-bottom: 2px solid #8b8b8b;
+}
+
+.column {
+  border: 2px solid #8b8b8b;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+}
+
+.lastColumn {
+  border-right: 2px solid #8b8b8b;
+}
+
 /* Layout */
 * {
   padding: 0;
@@ -52,7 +67,7 @@ body {
 }
 
 main {
-  padding: 1.5em;
+  padding: 1em;
   font-family: Verdana;
   font-size: 14px;
   flex-direction: column;
@@ -71,8 +86,8 @@ main {
 #navbar {
   list-style-type: none;
   width: 100vw;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 
   display: flex;
   flex-direction: column;
@@ -81,8 +96,7 @@ main {
 #navbar ul {
   list-style: none;
 
-  margin: 0;
-  padding: 0 2.8vw;
+  margin: 0 3vw;
 
   display: flex;
   flex-wrap: wrap;
@@ -110,12 +124,37 @@ main {
   display:none !important;
 }
 
+.status {
+  display: inline-flex;
+  flex-direction: row;
+
+  justify-content: center;
+  width: 91.25vw;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+
+  text-align: center;
+}
+
+.column h3 {
+  font-size: 12px;
+}
+
+.column h4 {
+  font-size: 8px;
+}
+
 #game {
   display: flex;
 
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
 
   font-size: 10px;
+  flex-direction: column;
 }
 
 .area {
