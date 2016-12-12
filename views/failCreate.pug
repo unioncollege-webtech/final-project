@@ -1,0 +1,40 @@
+<!doctype html>
+html
+    head
+        link(rel='stylesheet' href='/style.css')
+        title Character Creator
+    body
+        h1 Create your Character
+        p Enter your character's information:
+        ul
+            li(id="fail") This character name is already taken.
+        form(method="POST" action="/charSubmit" name="form" id="form")
+            ul
+                li
+                    label Character name:
+                        input(type="text" name="name" autofocus required)
+                li
+                    label Password:
+                        input(type="password" name="password" value=password required)
+                li
+                    label Vitality:
+                        input(type="number" name="vitality" value=vitality min="8" max="16" required)
+                li
+                    label Dexterity:
+                        input(type="number" name="dexterity" value=dexterity min="8" max="16" required)
+                li
+                    label Strength:
+                        input(type="number" name="strength" value=strength min="8" max="16" required)
+                li
+                    label Intelligence:
+                        input(type="number" name="intelligence" value=intelligence min="8" max="16" required)
+                li
+                    label Agility:
+                        input(type="number" name="agility" value=agility min="8" max="16" required)
+                li
+                    label Stealth:
+                        input(type="number" name="stealth" value=stealth min="8" max="16" required)
+                li(id="pointsLeft")
+                li
+                    button(id="submit" type="submit" style="display: none") Submit
+        script(src="/charCreate.js")

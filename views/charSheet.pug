@@ -1,0 +1,31 @@
+<!doctype html>
+html
+    head
+        link(rel='stylesheet' href='/style.css')
+        title #{name} Character Sheet
+    body
+        h1 Character Sheet
+        ul
+            li Name: #{name}
+            li Level: #{level}
+            li Vitality: #{vitality}
+            li Dexterity: #{dexterity}
+            li Strength: #{strength}
+            li Intelligence: #{intelligence}
+            li Agility: #{agility}
+            li Stealth: #{stealth}
+            li
+                form(method="POST" action="/charEdit" name="form" id="form")
+                    ul
+                        li(style="display: none")
+                            input(type="text" name="name" value=name)
+                        li
+                            button(id="submit" type="submit") Edit Character
+            li &nbsp;
+            li
+                form(method="POST" action="/charDeleteConfirm" name="form" id="form")
+                    ul
+                        li(style="display: none")
+                            input(type="text" name="name" value=name)
+                        li
+                            button(id="submit" type="submit") Delete Character

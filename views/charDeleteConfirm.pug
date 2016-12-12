@@ -1,0 +1,14 @@
+<!doctype html>
+html
+    head
+        link(rel='stylesheet' href='/style.css')
+        title Character Deletion
+    body
+        h1 Are you sure you wish to delete your character #{name}?
+        p This cannot be undone.
+        form(method="POST" action="/charDelete" name="form" id="form")
+            ul
+                li(style="display: none")
+                    input(type="text" name="name" value=name)
+                li
+                    button(id="submit" type="submit") Delete Character
