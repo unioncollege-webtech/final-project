@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title="Order - ACE Order Center"
+    title="Trumpts - The Game"
     link(rel="stylesheet" href="/styles.css")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     script(src="/dist/socket.io.js")
@@ -11,25 +11,22 @@ html
     Main
       div#headingStuff
         h1="Trumps - The Game"
+      //Note: The convention for the navbar is to have the subsequen section name + "the" at the front
       nav#navbar
         ul
-          li
-            a(href="#").active
-              ="The Mines"
-          li
-            a(href="#")
-              ="The Village"
-          li
-            a(href="#")
-              ="The City"
-          li
-            a(href="#")
-              ="The Whitehouse"
-          li
-            a(href="#")
-              ="The Situation Room"
+          li#theMine.active
+            ="The Mines"
+          li#theVillage
+            ="The Village"
+          li#theCity
+            ="The City"
+          li#theWhitehouse
+            ="The Whitehouse"
+          li#theSituationRoom
+            ="The Situation Room"
       div#game
-        div#mineStatus.status
+        //Note: The convention for status is the area name + Status
+        div#mineStatus.status.active
           div.column
             h3="Trumps"
             h4="4/10"
@@ -45,7 +42,11 @@ html
           div.column.lastColumn
             h3="Trumpets"
             h4="0 Trumps"
-        div#theMines.area
+        div#villageStatus.status.hidden
+        div#cityStatus.status.hidden
+        div#whitehouseStatus.status.hidden
+        div#situationRoomStatus.status.hidden
+        div#mine.area.active
           h2="The Mines"
           div.modulesContainer
             div#hatchery.module
@@ -56,7 +57,7 @@ html
               h3="TrumpCo TaCo Farm"
             div#trumpetManufactury.module
               h3="Trumpet Manufactory"
-        div#theVillage.area.hidden
-        div#theCity.area.hidden
-        div#theWhitehouse.area.hidden
-        div#theSituationRoom.area.hidden
+        div#village.area.hidden
+        div#city.area.hidden
+        div#whitehouse.area.hidden
+        div#situationRoom.area.hidden
