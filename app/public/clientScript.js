@@ -15,12 +15,14 @@ $(document).ready(function() {
       changeScreen(e.target.id);
     }
   });
+  function lowerFirst(stringbean) {
+    return stringbean.charAt(0).toLowerCase() + stringbean.slice(1)
+  }
   //Function for changing the active screen
   function changeScreen(newScreen) {
     $(".status.active").toggleClass("active hidden")
     $(".area.active").toggleClass("active hidden")
-    console.log($("#" + newScreen.substr(3).toLowerCase() + "Status"))
-    $("#" + newScreen.substring(3).toLowerCase() + "Status").toggleClass("active hidden")
-    $("#" + newScreen.substring(3).toLowerCase()).toggleClass("active hidden")
+    $("#" + lowerFirst(newScreen.substr(3)) + "Status").toggleClass("active hidden")
+    $("#" + lowerFirst(newScreen.substr(3))).toggleClass("active hidden")
   }
 });
