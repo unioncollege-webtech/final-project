@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Floors</title>
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <h1>Floors</h1>
+    <p>
+        <form method="POST" action="/charLogin" name="form" id="form">
+            <ul>
+            <li><label>Character name:<input type="text" name="name" autofocus required></label></li>
+            <li><label>Password:<input type="password" name="password" required></label></li>
+            <li><button type="submit">Sign In</button></li>
+            <li id="fail">Incorrect username or password.</li>
+            </ul>
+        </form>
+    </p>
+    <p>Don't have a character yet? <a href="/charCreate.html">Create one!</a></p>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+body {
+    background-color: #636363;
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+ul {
+    list-style-type: none;
+    width: 20em;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+input {
+    float: right;
+    border: solid 1px #C0C0C0;
+    background-color: #202020;
+    color: white;
+}
+
+button {
+    border: outset 1px #606060;
+    border-radius: 5px;
+    background-color: #C0C0C0;
+    color: black;
+    float: right;
+}
+
+button:hover {
+    border: inset 1px black;
+}
+
+#fail {
+    color:red;
+}
