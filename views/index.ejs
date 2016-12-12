@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Final Project</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+
+<body>
+    <h1>Holmes Lake Jogging Club</h1>
+    <p>Hi Team! Please enter your name and laps into the log!</p>
+    <p><i>Source: https://zellwk.com/blog/crud-express-mongodb/</i></p>
+    <ul class="logs">
+  <% for(var i=0; i<logs.length; i++) {%>
+    <li class="log">
+      <span><%= logs[i].name %></span>
+      <span><%= logs[i].laps %></span>
+    </li>
+  <% } %>
+</ul>
+    <p>
+        <form action="/logs" method="POST">
+            Enter Jogger Name:<input type="text" placeholder="Jogger Name" name="name"></label>
+            <br>
+            Enter # of Laps:<input type="text" placeholder="# of Lap" name="laps"></label>
+            <br>
+            <button type="submit">Enter Log</button>
+         </form>
+    </p>
+</body>
+
+</html>
