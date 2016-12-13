@@ -89,10 +89,13 @@ function updatePlayer(pID, fieldAndValue) {
 }
 //updatePlayer('Test2','playerID','TEst3')
 
-function deletePlayer(pID) {
-  return Player.findOneAndRemove({ playerID: pID }, function(err, player) {
+function deletePlayer(pID, callback) {
+  Player.findOneAndRemove({ playerID: pID }, function(err, player) {
     if (err) throw err;
-    return "Player successfully deleted"
+    console.log("Deleted " + pID)
+    function runCallback() {
+      callback()
+    }
   })
 }
 
@@ -181,6 +184,13 @@ io.on('connection', function (socket) {
         if (err) throw err;
         //TODO: Fix this to first CHECK if the player exists, if not then create, instead of just assuming the create will error if exists
         newPlayer(data.player, trumpSlotUpdate(data,socket))
+      })
+    }
+    if (data.name === "delete") {
+      getPlayerByID(data.player, function(err, player) {
+        if (err) throw err;
+        //TODO: Fix this to first CHECK if the player exists, if not then create, instead of just assuming the create will error if exists
+        deletePlayer(data.player,updateAUser(data,socket))
       })
     }
   })

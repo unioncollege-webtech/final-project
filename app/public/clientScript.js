@@ -42,6 +42,14 @@ $(document).ready(function() {
       name: clickedButton
     })
   })
+  $("#deleteSave").on("click","button",function(e){
+    e.preventDefault();
+    var clickedButton = lowerFirst(e.target.id.substring(0,e.target.id.length - 6))
+    socket.emit('incrementClicked', {
+      player: "Wilson Grumpstache",
+      name: clickedButton
+    })
+  })
 
   socket.on('updatePlayer', function(data) {
     console.log(data)
