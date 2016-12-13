@@ -1,0 +1,18 @@
+h1 {
+    font-family: fantasy;
+    text-align: center;
+}
+form {
+    margin: auto;
+    width: 50%;
+}
+input {
+    width: 100%;
+    margin-bottom: 1%;
+    font-size: x-large;
+}
+#recipeName {
+    margin-bottom: 2%;
+    font-size: xx-large;
+    text-align: center;
+}
