@@ -11,37 +11,37 @@ html
     Main
       div#headingStuff
         h1="Trumps - The Game"
-      //Note: The convention for the navbar is to have the subsequen section name + "the" at the front
+      //Note: The convention for the navbar is to have the subsequent section name + "the" at the front
       nav#navbar
         ul
           li#theMine.active
             ="The Mines"
-          li#theVillage
+          li#theVillage.hidden
             ="The Village"
-          li#theCity
+          li#theCity.hidden
             ="The City"
-          li#theWhitehouse
+          li#theWhitehouse.hidden
             ="The Whitehouse"
-          li#theSituationRoom
+          li#theSituationRoom.hidden
             ="The Situation Room"
       div#game
         //Note: The convention for status is the area name + Status
         div#mineStatus.status.active
-          div.column
+          div.column#trumps
             h3="Trumps"
             h4="4/10"
-          div.column
+          div.column#dollaBills
             h3="Dolla Bills"
             h4="$69"
-          div.column
+          div.column#tacos
             h3="Tacos"
-            h4="0 Bells"
-          div.column
+            h4="0"
+          div.column#ore
             h3="Ore"
-            h4="0 Tons"
-          div.column.lastColumn
+            h4="0"
+          div.column.lastColumn#trumpets
             h3="Trumpets"
-            h4="0 Trumps"
+            h4="0"
         div#villageStatus.status.hidden
         div#cityStatus.status.hidden
         div#whitehouseStatus.status.hidden

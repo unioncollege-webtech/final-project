@@ -1,5 +1,9 @@
 $(document).ready(function() {
   console.log("Javascript Ready")
+  function update() {
+    
+    requestAnimationFrame(update)
+  }
   //Selector for when you click a navbar element
   $("#navbar").on("click", "li", function(e) {
     //Create a target variable for less querying
