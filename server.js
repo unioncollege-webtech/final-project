@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var db;
 
+
 MongoClient.connect('mongodb://password:password@ds131878.mlab.com:31878/ucfinalproject', (err, database) => {
   if (err) return console.log(err);
   db = database;
@@ -16,6 +17,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res) {
@@ -33,26 +35,26 @@ app.post('/logs', function(req, res) {
   });
 });
 
-app.put('/logs', function(req, res) {
+app.put('/logs', (req, res) => {
   db.collection('logs')
-  .findOneAndUpdate({timestamp:1}, {
+  .findOneAndUpdate({}, {
     $set: {
-      name: 'Admin',
-      laps: 'Request has been made to change entry.'
+      laps: 'Request to update information'
     }
   }, {
-    sort: {_id: 1},
+    sort: {_id: -1},
     upsert: true
-  }, function(err, result) {
+  }, (err, result) => {
     if (err) return res.send(err);
     res.send(result);
   });
 });
 
-app.delete('/logs', function(req, res) {
-  db.collection('logs').remove.limit(1).sort({timestamp:-1},
+app.delete('/logs', (req, res) => {
+  db.collection('logs').findOneAndDelete({},
   (err, result) => {
     if (err) return res.send(500, err);
-    res.send('Deleted last file.');
+    res.send('One log deleted.');
   });
 });
+

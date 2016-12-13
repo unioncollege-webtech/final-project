@@ -1,6 +1,7 @@
 /*global fetch*/
 var update = document.getElementById('update');
 var del = document.getElementById('delete');
+var delall = document.getElementById('delall');
 
 
 update.addEventListener('click', function () {
@@ -8,7 +9,6 @@ update.addEventListener('click', function () {
     method: 'put',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      'name': 'Admin',
       'laps': 'Request entry to be altered.'
     })
   })
@@ -36,4 +36,5 @@ del.addEventListener('click', function () {
     console.log(data);
     window.location.reload();
   });
-})
+});
+
