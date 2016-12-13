@@ -29,10 +29,10 @@ html
         div#mineStatus.status.active
           div.column#trumps
             h3="Trumps"
-            h4="4/10"
+            h4="0/1"
           div.column#dollaBills
             h3="Dolla Bills"
-            h4="$69"
+            h4="0"
           div.column#tacos
             h3="Tacos"
             h4="0"
@@ -51,6 +51,13 @@ html
           div.modulesContainer
             div#hatchery.module
               h3="Trump Hatchery"
+              div.buttonHolder
+                button(type="button")#hatcheryButton.button
+                  ="Hatch a trump!"
+                button(type="button")#hatcheryMoneyButton.button
+                  ="Make some money! (1 per trump)"
+                button(type="button")#trumpSlotButton.button
+                  ="Buy max-trumps increase! ($100)"
             div#amMineInc.module
               h3="Great America Mining"
             div#trumpcoTacoFarm.module

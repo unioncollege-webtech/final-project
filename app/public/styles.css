@@ -43,6 +43,17 @@ main {
   border-right: 2px solid #8b8b8b;
 }
 
+.button {
+  background-color: #222222;
+  color: white;
+  border: 2px solid #4acd2f;
+}
+
+.button:hover {
+	background-color:#4d8f2c;
+}
+
+
 /* Layout */
 * {
   padding: 0;
@@ -177,6 +188,24 @@ main {
 
 .module p {
   padding-left: 0.5rem;
+}
+
+.buttonHolder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 0.2rem;
+}
+
+.button {
+  display: flex;
+
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0.2rem;
+  margin: 0.2rem 0;
+  text-align: center;
 }
 
 @media (max-width: 961px) {

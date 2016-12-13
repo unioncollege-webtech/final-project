@@ -1,6 +1,6 @@
 var express = require('express')
 
-/**XXX: Atom waypoint options:
+/**NOTE: Atom waypoint options:
 TODO
 FIXME
 CHANGED
@@ -49,9 +49,9 @@ var playerSchema = new Schema({
 
 var Player = mongoose.model('Player', playerSchema)
 
-function newPlayer(pID) {
+function newPlayer(pID, callback) {
   //Create temp player var holding the new player
-  var newPlayer = new Player({
+  var thisNewPlayer = new Player({
     playerID: pID,
     trumps: 1,
     maxTrumps: 1,
@@ -63,18 +63,15 @@ function newPlayer(pID) {
     }]
   })
   //Save temp player var to DB to make permanent
-  newPlayer.save(function (err) {
+  thisNewPlayer.save(function (err) {
     if (err) return console.error("---WARN---\n\nUser not added:\n\n", err, "\n\n---END WARN---\n")
-    else return console.log('New user! Welcome, ' + newPlayer["playerID"] + " to the database!")
+    else return console.log('New user! Welcome, ' + thisNewPlayer["playerID"] + " to the database!")
+    callback();
   })
 }
-newPlayer("Test2")
 
-function getPlayersByID(pID) {
-  return Player.find({ playerID: pID }, function(err, player) {
-    if (err) throw err;
-    return player
-  })
+function getPlayerByID(pID,callback) {
+  return Player.find({ playerID: pID }, callback)
 }
 
 function getPlayersAll() {
@@ -83,14 +80,14 @@ function getPlayersAll() {
     console.log(players)
   })
 }
-getPlayersAll()
 
-function updatePlayer(pID, field_to_update, updated_value) {
-  return Player.findOneAndUpdate({ playerID: pID }, { field_to_update: updated_value }, function(err, player) {
+function updatePlayer(pID, fieldAndValue) {
+  Player.findOneAndUpdate({ playerID: pID }, fieldAndValue, function(err, player) {
     if (err) throw err;
-    return player[pID]
+    console.log("Player updated")
   })
 }
+//updatePlayer('Test2','playerID','TEst3')
 
 function deletePlayer(pID) {
   return Player.findOneAndRemove({ playerID: pID }, function(err, player) {
@@ -109,21 +106,84 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
-io.on('connection', function (socket) {
-
-  /**
-  io.emit('resLimResponse', { status: limitingResponses });
-  socket.on('limits', function (data) {
-    if (data.toggle) {
-      if (limitingResponses == true) {
-        limitingResponses = false;
-      } else {
-        limitingResponses = true;
-      }
-      io.emit('resLimResponse', { status: limitingResponses });
+function hatcheryUpdate(data,socket) {
+  getPlayerByID(data.player, function(err, player) {
+    if (!player[0]) {
+      return
     }
-  });
-  **/
+    if (player[0].trumps < player[0].maxTrumps) {
+      updatePlayer(player[0].playerID, { trumps: (player[0].trumps + 1) } )
+    }
+  })
+}
+
+function hatcheryMoneyUpdate(data,socket) {
+  getPlayerByID(data.player, function(err, player) {
+    if (!player[0]) {
+      return
+    }
+    updatePlayer(player[0].playerID, { money: (player[0].money + player[0].trumps) } )
+  })
+}
+
+function trumpSlotUpdate(data,socket) {
+  getPlayerByID(data.player, function(err, player) {
+    if (!player[0]) {
+      return
+    }
+    if (player[0].money > 100) {
+      updatePlayer(player[0].playerID, { maxTrumps: (player[0].maxTrumps + 1) } )
+      updatePlayer(player[0].playerID, { money: (player[0].money - 100) } )
+    }
+  })
+}
+
+function updateAUser(data,socket) {
+  getPlayerByID(data.player, function(err, player) {
+    if (err) throw err;
+    if (player[0]) {
+      socket.emit('updatePlayer', {
+        trumps: player[0].trumps,
+        maxTrumps: player[0].maxTrumps,
+        money: player[0].money
+      })
+    } else {
+      socket.emit('updatePlayer', {
+        trumps: 0,
+        maxTrumps: 1,
+        money: 0
+      })
+    }
+  })
+}
+
+io.on('connection', function (socket) {
+  socket.on('userReqUpdate', function (data) {
+    updateAUser(data,socket);
+  })
+  socket.on('incrementClicked', function(data) {
+    if (data.name === "hatchery") {
+      getPlayerByID(data.player, function(err, player) {
+        if (err) throw err;
+        //TODO: Fix this to first CHECK if the player exists, if not then create, instead of just assuming the create will error if exists
+        newPlayer(data.player, hatcheryUpdate(data,socket))
+      })
+    }
+    if (data.name === "hatcheryMoney") {
+      getPlayerByID(data.player, function(err, player) {
+        if (err) throw err;
+        //TODO: Fix this to first CHECK if the player exists, if not then create, instead of just assuming the create will error if exists
+        newPlayer(data.player, hatcheryMoneyUpdate(data,socket))
+      })
+    }
+    if (data.name === "trumpSlot") {
+      getPlayerByID(data.player, function(err, player) {
+        if (err) throw err;
+        //TODO: Fix this to first CHECK if the player exists, if not then create, instead of just assuming the create will error if exists
+        newPlayer(data.player, trumpSlotUpdate(data,socket))
+      })
+    }
+  })
 });
 
 // Have the Express application listen for incoming requests on port 8080
