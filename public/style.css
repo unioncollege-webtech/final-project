@@ -1,18 +1,32 @@
 h1 {
-    font-family: fantasy;
+    font-family: sans-serif;
     text-align: center;
+    color: white;
+    background-color: lightgreen;
+    padding-bottom: 5%;
+    padding-top: 5%;
 }
 form {
     margin: auto;
     width: 50%;
+    font-size: large;
 }
 input {
     width: 100%;
     margin-bottom: 1%;
     font-size: x-large;
+    background-color: lightgrey;
 }
 #recipeName {
     margin-bottom: 2%;
     font-size: xx-large;
     text-align: center;
+}
+#getcooking {
+    background-color: white;
+    font-family: sans-serif;
+}
+body {
+    background-color: lightblue;
+    font-family: sans-serif;
 }
