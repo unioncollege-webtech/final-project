@@ -1,5 +1,5 @@
 Trumps - The Game
------------------
+=================
 Trumps is an incremental (clicking) game where you try to grow your Trump army. You must upgrade your Trump colonies and ultimately take over the world.
 
 Each save has the following properties:
@@ -33,6 +33,7 @@ Routes
 - / - The home or 'index' route. All features are on this route, due to Socket.IO ajax
 
 Additional Features (TODO):
+---------------------------
 - Add things to the remaining areas in The Mines
 - Add support for the other 4 locations (The Village, The City, The Whitehouse, The Situation Room)
 - Support multiple users (either through a username/password system or another form of UUID system (IP address?)) as currently there is only one worldwide save (as fun as it would be to see how much the world would play this collectively)
