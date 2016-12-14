@@ -1,0 +1,38 @@
+body{
+    background-color: #00FFFF;
+    text-align: center;
+    max-width: 33em;
+    margin: auto;
+}
+
+.update-list{
+    display: flex;
+    flex-direction: column;
+}
+.update-item{
+    margin: 5px;
+}
+.edit-btn-group{
+    display:flex;
+}
+.edit-btn{
+    flex-grow: 1;
+    margin: 5px;
+}
+
+#New-items{
+    text-align: left;
+}
+.tagline{
+    text-align: left;
+}
+li{
+    padding: 1em;
+}
+form .delete-form-button{
+    text-align: left;
+}
+.btn btn-danger btn-xs{
+    max-width: 10px;
+    max-height: 12px;
+}
