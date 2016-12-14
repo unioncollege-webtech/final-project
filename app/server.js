@@ -86,6 +86,7 @@ function newPlayer(pID, cb) {
   })
 }
 
+//cb(result)
 function getPlayerByID(pID, cb) {
   Player.findOne({ 'playerID': pID }).exec(function(err,result) {
     //console.log('in findOne, have result found for: ' + pID + ', calling back')
@@ -94,6 +95,7 @@ function getPlayerByID(pID, cb) {
   })
 }
 
+//cb(err,result)
 function getPlayersAll(cb) {
   Player.find({}, cb)
 }
@@ -103,6 +105,7 @@ function updatePlayer(pID, fieldAndValue, cb) {
   Player.findOneAndUpdate({ playerID: pID }, fieldAndValue, cb)
 }
 
+//cb(err)
 function deletePlayer(pID, cb) {
   Player.findOneAndRemove({ playerID: pID }, cb)
 }
