@@ -1,0 +1,29 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "[![Join the chat at https://gitter.im/unioncollege-webtech/final-project](https://badges.gitter.im/unioncollege-webtech/final-project.svg)](https://gitter.im/unioncollege-webtech/final-project?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkdev2015/final-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkdev2015/final-project/issues"
+  },
+  "homepage": "https://github.com/mkdev2015/final-project#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.16"
+  },
+  "devDependencies": {
+    "nodeman": "^1.1.2",
+    "nodemon": "^1.11.0"
+  }
+}
