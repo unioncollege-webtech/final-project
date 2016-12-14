@@ -50,11 +50,18 @@ $(document).ready(function() {
       name: clickedButton
     })
   })
-
+  /**
+  $(".status #trumps h4").change(function(e) {
+    if e.target.text
+  })
+  **/
   socket.on('updatePlayer', function(data) {
-    console.log(data)
+    //console.log(data)
     $(".status #trumps h4").text(data.trumps + "/" + data.hatchery)
     $(".status #dollaBills h4").text(data.money)
+    if ($("#amMineButtonHolder").hasClass("hidden") && (data.trumps >= 10) && (data.hatchery >= 10)) {
+      $("#amMineButtonHolder").removeClass("hidden")
+    }
   })
 
   update();

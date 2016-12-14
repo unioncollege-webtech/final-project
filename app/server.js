@@ -15,8 +15,10 @@ BUG
 
 //NOTE: Client should send only if still connected - server should do all calculations
 /**TODO:
- * Add in socket.io stuff so can interact with DB
- * Hook in DB with this thingie
+ * 1) Implement Great America Mining
+ * 2) Implement TrumpCo TaCo Farm
+ * 3) Make the other module (GAM, TC TC F, TM) hidden till unlocked - maybe with text that says "This to unlock <insertName>"
+ * 0) Triple check all my functions in a variety of conditions (without a DB, without a collection, etc.)
  * IDEA: Hook in way to differentiate users without having to make login...
 **/
 
@@ -177,7 +179,7 @@ io.on('connection', function (socket) {
         if (player.trumps < player.areas[0].buildings.hatchery) {
           updatePlayer(player.playerID, {trumps: (player.trumps + 1) }, function(err,player) {})
         } else {
-          console.log("Too many trumps for your hatchery")
+          //console.log("Too many trumps for your hatchery")
         }
       })
     }
@@ -201,7 +203,7 @@ io.on('connection', function (socket) {
           var newHatchVal = player.areas
           newHatchVal[0].buildings.hatchery = (player.areas[0].buildings.hatchery + 1)
           updatePlayer(player.playerID, {areas: newHatchVal}, function (err, player) {})
-          updatePlayer(player.playerID, {money: (player.money - 100)}, function(err, player) { console.log (player)} )
+          updatePlayer(player.playerID, {money: (player.money - 100)}, function(err, player) {} )
         }
       })
     }

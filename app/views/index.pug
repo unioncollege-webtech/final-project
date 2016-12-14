@@ -51,7 +51,7 @@ html
           div.modulesContainer
             div#hatchery.module
               h3="Trump Hatchery"
-              div.buttonHolder
+              div#hatcheryButtonHolder.buttonHolder
                 button(type="button")#hatcheryButton.button
                   ="Recruit a Trump!"
                 button(type="button")#hatcheryMoneyButton.button
@@ -60,13 +60,13 @@ html
                   ="Upgrade Trump Barracks! ($100)"
             div#amMineInc.module
               h3="Great America Mining"
-              div.buttonHolder
-                button(type="button")#mineOreButton.button.hidden
+              div#amMineButtonHolder.buttonHolder.hidden
+                button(type="button")#mineOreButton.button
                   ="Mine an Ore! (10 Left)"
-                button(type="button")#expandMinesButton.button.hidden
-                  ="Expand the mines! ($500)"
-                button(type="button")#hireImmigrantsButton.button.hidden
-                  ="Hire illegal immigrants! ($2500)"
+                button(type="button")#expandMinesButton.button
+                  ="Expand the mines! ($2500)"
+                button(type="button")#hireImmigrantsButton.button
+                  ="Hire illegal immigrants! ($5000)"
             div#trumpcoTacoFarm.module
               h3="TrumpCo TaCo Farm"
             div#trumpetManufactury.module
