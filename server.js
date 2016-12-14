@@ -1,9 +1,8 @@
 var express = require('express');
-var fs = require('fs');
 var Notes = require('./storage.json');
-
 var app = express();
 var bodyparser = require('body-parser');
+var fs = require('fs');
 app.set('view engine', 'hbs');
 app.use(express.static('public'));
 
