@@ -4,7 +4,7 @@ $(document).ready(function() {
   function update() {
     //Add function for every 5 minutes or so to change trumps to turnips for 3 seconds
     socket.emit('userReqUpdate', {
-      player: "Wilson Grumpstache"
+      playerID: "Wilson Grumpstache"
     });
     requestAnimationFrame(update)
   }
@@ -53,7 +53,7 @@ $(document).ready(function() {
 
   socket.on('updatePlayer', function(data) {
     console.log(data)
-    $(".status #trumps h4").text(data.trumps + "/" + data.maxTrumps)
+    $(".status #trumps h4").text(data.trumps + "/" + data.hatchery)
     $(".status #dollaBills h4").text(data.money)
   })
 
