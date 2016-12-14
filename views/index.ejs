@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kond Kids Book Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1> Welcome to our Book Tracker! Enter your book.</h1>
+
+  <ul class="books">
+  <% for(var i=0; i<books.length; i++) {%>
+    <li class="book">
+      <span><%= books[i].name %></span>
+      <span><%= books[i].book %></span>
+    </li>
+  <% } %>
+  </ul>
+
+  <h2>Add a book</h2>
+
+  <form action="/books" method="POST">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="book" name="book">
+    <button type="submit">Submit</button>
+  </form>
+
+  <div>
+    <h2>Replace last book</h2>
+    <button id="update"> New book! </button>
+  </div>
+
+  <div>
+    <h2>Delete the first book</h2>
+    <button id="delete"> Delete first book </button>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+</html>

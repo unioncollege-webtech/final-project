@@ -1,0 +1,15 @@
+html {
+  font-size: 20px;
+}
+
+.book {
+  margin-top: 0.5em;
+}
+
+.book > span:first-child {
+  font-weight: bold
+}
+
+.book > span:first-child:after {
+  content:':'
+}
