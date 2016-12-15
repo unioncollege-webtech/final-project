@@ -149,16 +149,20 @@ function updateAUser(data,socket) {
       newPlayer(data.playerID, function(err, newPlayer) {
         socket.emit('updatePlayer', {
           trumps: newPlayer.trumps,
+          money: newPlayer.money,
           hatchery: newPlayer.areas[0].buildings.hatchery,
-          money: newPlayer.money
+          ore: newPlayer.areas[0].materials.ore,
+          oreDeposits: newPlayer.areas[0].buildings.oreDeposits
         })
       })
     } else {
       //console.log("emitting back when not null: " + result)
       socket.emit('updatePlayer', {
         trumps: result.trumps,
+        money: result.money,
         hatchery: result.areas[0].buildings.hatchery,
-        money: result.money
+        ore: result.areas[0].materials.ore,
+        oreDeposits: result.areas[0].buildings.oreDeposits
       })
     }
   })
@@ -200,10 +204,38 @@ io.on('connection', function (socket) {
           return
         }
         if (player.money >= 100) {
-          var newHatchVal = player.areas
-          newHatchVal[0].buildings.hatchery = (player.areas[0].buildings.hatchery + 1)
-          updatePlayer(player.playerID, {areas: newHatchVal}, function (err, player) {})
-          updatePlayer(player.playerID, {money: (player.money - 100)}, function(err, player) {} )
+          var newVal = player
+          newVal.areas[0].buildings.hatchery = (player.areas[0].buildings.hatchery + 1)
+          newVal.money = (player.money - 100)
+          updatePlayer(player.playerID, newVal, function (err, player) {})
+        }
+      })
+    }
+    if (data.name === "mineOre") {
+      getPlayerByID(data.player, function(player) {
+        if (!player) {
+          console.log("No player found! " + player)
+          return
+        }
+        if (player.areas[0].buildings.oreDeposits > 0) {
+          var newVal = player
+          newVal.areas[0].buildings.oreDeposits = (player.areas[0].buildings.oreDeposits - 1);
+          newVal.areas[0].materials.ore = (player.areas[0].materials.ore + 1)
+          updatePlayer(player.playerID, newVal, function (err,player) {})
+        }
+      })
+    }
+    if (data.name === "expandMines") {
+      getPlayerByID(data.player, function(player) {
+        if (!player) {
+          console.log("No player found! " + player)
+          return
+        }
+        if (player.money > 2500) {
+          var newVal = player
+          newVal.areas[0].buildings.oreDeposits = (player.areas[0].buildings.oreDeposits + 25)
+          newVal.money = (player.money - 2500)
+          updatePlayer(player.playerID, newVal, function(err,player) {})
         }
       })
     }

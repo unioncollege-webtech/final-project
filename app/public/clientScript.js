@@ -58,10 +58,13 @@ $(document).ready(function() {
   socket.on('updatePlayer', function(data) {
     //console.log(data)
     $(".status #trumps h4").text(data.trumps + "/" + data.hatchery)
+    $("#hatcheryMoneyButton").text("Raise Campaign Funds! (+$" + data.trumps + ")")
     $(".status #dollaBills h4").text(data.money)
     if ($("#amMineButtonHolder").hasClass("hidden") && (data.trumps >= 10) && (data.hatchery >= 10)) {
       $("#amMineButtonHolder").removeClass("hidden")
     }
+    $(".status #ore h4").text(data.ore)
+    $("#mineOreButton").text("Mine an Ore! (" + data.oreDeposits + " Left)")
   })
 
   update();
