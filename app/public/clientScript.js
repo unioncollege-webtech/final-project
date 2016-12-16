@@ -65,6 +65,7 @@ $(document).ready(function() {
     }
     $(".status #ore h4").text(data.ore)
     $("#mineOreButton").text("Mine an Ore! (" + data.oreDeposits + " Left)")
+    $("#hireImmigrantsButton").text("Hire illegal immigrants! ($10000) (+$" + data.immigrants * 500 + "/s)")
   })
 
   update();

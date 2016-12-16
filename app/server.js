@@ -41,6 +41,7 @@ var playerSchema = new Schema({
   playerID: { type: String, required: true, unique: true },
   trumps: Number,
   money: Number,
+  lastUpdated: Date,
   areas: [{
     name: String,
     materials: Schema.Types.Mixed,
@@ -49,6 +50,8 @@ var playerSchema = new Schema({
 })
 
 var Player = mongoose.model('Player', playerSchema)
+
+var prevTime = new Date()
 
 function newPlayer(pID, cb) {
   //Var to hold the new player return by the get
@@ -62,6 +65,7 @@ function newPlayer(pID, cb) {
         playerID: pID,
         trumps: 0,
         money: 0,
+        lastUpdated: new Date(),
         areas: [{
           name: "mine",
           materials: {
@@ -72,6 +76,7 @@ function newPlayer(pID, cb) {
           buildings: {
             hatchery: 1,
             oreDeposits: 10,
+            immigrants: 0,
             fields: 0,
             factories: 0
           }
@@ -152,19 +157,39 @@ function updateAUser(data,socket) {
           money: newPlayer.money,
           hatchery: newPlayer.areas[0].buildings.hatchery,
           ore: newPlayer.areas[0].materials.ore,
-          oreDeposits: newPlayer.areas[0].buildings.oreDeposits
+          oreDeposits: newPlayer.areas[0].buildings.oreDeposits,
+          immigrants: newPlayer.areas[0].buildings.immigrants
         })
       })
     } else {
+      if ((new Date() - prevTime) > 1000) {
+        prevTime = new Date()
+        perSecond(result.playerID)
+      }
+      //TODO: make this work to add all /s things for each secondsince last updated
+      //if (new Date() - result.lastUpdated)
       //console.log("emitting back when not null: " + result)
       socket.emit('updatePlayer', {
         trumps: result.trumps,
         money: result.money,
         hatchery: result.areas[0].buildings.hatchery,
         ore: result.areas[0].materials.ore,
-        oreDeposits: result.areas[0].buildings.oreDeposits
+        oreDeposits: result.areas[0].buildings.oreDeposits,
+        immigrants: result.areas[0].buildings.immigrants
       })
     }
+  })
+}
+
+function perSecond(playerID) {
+  getPlayerByID(playerID, function(player) {
+    if (!player) {
+      console.log("No player found! " + player)
+      return
+    }
+    var newVal = player
+    newVal.money += (player.areas[0].buildings.immigrants * 500)
+    updatePlayer(player.playerID, newVal, function (err, player) {})
   })
 }
 
@@ -236,6 +261,21 @@ io.on('connection', function (socket) {
           newVal.areas[0].buildings.oreDeposits = (player.areas[0].buildings.oreDeposits + 25)
           newVal.money = (player.money - 2500)
           updatePlayer(player.playerID, newVal, function(err,player) {})
+        }
+      })
+    }
+    if (data.name === "hireImmigrants") {
+      getPlayerByID(data.player, function(player) {
+        if (!player) {
+          console.log("No player found! " + player)
+          return
+        }
+        if (player.money > 10000) {
+          console.log(player.areas[0].buildings.immigrants)
+          var newVal = player
+          newVal.areas[0].buildings.immigrants = (player.areas[0].buildings.immigrants + 1)
+          newVal.money = (player.money - 10000)
+          updatePlayer(player.playerID, newVal, function(err,player) { console.log("immErr: " + err)})
         }
       })
     }
