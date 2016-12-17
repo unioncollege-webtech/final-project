@@ -280,6 +280,27 @@ io.on('connection', function (socket) {
       })
     }
     if (data.name === "farmTaco") {
+      /**IDEA:
+      Instead of doing the farm a taco thing,
+      have players purchase taco plots,
+      assign trumps to these plots
+      eventually tacos are produced and trumps
+      must be reassigned for another farm cycle
+      to take place.
+      IDEA:
+      Buttons:
+       - Assign trumps (0/1 default) - on right click can remove trump?
+       - Buy more plots (1 default)
+       - Taco sale! (Exponentially increasing
+        costs in tacos, but reduces the cost by
+        1 factor for all other upgrades)
+      TODO:
+      * Add in the exponential increase
+        of upgrades
+      * Move the whole checking-if-areas-unlocked thing
+        to the server, just check when something is bought and
+        add fields to say what is unlocked to the data structure
+      **/
       getPlayerByID(data.player, function(player) {
         if (!player) {
           console.log("No player found! " + player)
@@ -292,7 +313,9 @@ io.on('connection', function (socket) {
     }
     if (data.name === "delete") {
       getPlayerByID(data.player, function(player) {
-        deletePlayer(player.playerID, function(err) {} )
+        if (player) {
+          deletePlayer(player.playerID, function(err) {} )
+        }
       })
     }
   })

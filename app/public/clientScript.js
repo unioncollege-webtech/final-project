@@ -57,19 +57,31 @@ $(document).ready(function() {
   **/
   socket.on('updatePlayer', function(data) {
     //console.log(data)
-    $(".status #trumps h4").text(data.trumps + "/" + data.hatchery)
+    $(".status #trumps h3").text(data.trumps + "/" + data.hatchery)
     $("#hatcheryMoneyButton").text("Raise Campaign Funds! (+$" + data.trumps + ")")
-    $(".status #dollaBills h4").text(data.money)
+    $(".status #dollaBills h3").text(data.money)
+    //ADD things if am allowed
     if ($("#amMineButtonHolder").hasClass("hidden") && (data.trumps >= 10) && (data.hatchery >= 10)) {
       $("#amMineButtonHolder").removeClass("hidden")
     }
     if ($("#tacoFarmButtonHolder").hasClass("hidden") && (data.immigrants >= 10) && (data.ore >= 100)) {
       $("#tacoFarmButtonHolder").removeClass("hidden")
     }
-    $(".status #ore h4").text(data.ore)
+    //REMOVE things if save reset
+    if (!$("#amMineButtonHolder").hasClass("hidden")) {
+      if ((data.trumps < 10) || (data.hatchery < 10)) {
+        $("#amMineButtonHolder").addClass("hidden")
+      }
+    }
+    if (!$("#tacoFarmButtonHolder").hasClass("hidden")) {
+      if ((data.immigrants < 10) || (data.ore < 100)) {
+        $("#tacoFarmButtonHolder").addClass("hidden")
+      }
+    }
+    $(".status #ore h3").text(data.ore)
     $("#mineOreButton").text("Mine an Ore! (" + data.oreDeposits + " Left)")
     $("#hireImmigrantsButton").text("Hire illegal immigrants! ($10000) (+$" + data.immigrants * 100 + "/s)")
-    $(".status #tacos h4").text(data.tacos)
+    $(".status #tacos h3").text(data.tacos)
   })
 
   update();
