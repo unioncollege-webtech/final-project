@@ -1,0 +1,92 @@
+doctype html
+html
+  head
+    title="Trumps - The Game"
+    link(rel="stylesheet" href="/styles.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    script(src="/dist/socket.io.js")
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js")
+    script(src="/clientScript.js")
+  body
+    Main
+      div#headingStuff
+        h1="Trumps - The Game"
+      //Note: The convention for the navbar is to have the subsequent section name + "the" at the front
+      nav#navbar
+        ul
+          li#theMine.active
+            ="The Mines"
+          li#theVillage.hidden
+            ="The Village"
+          li#theCity.hidden
+            ="The City"
+          li#theWhitehouse.hidden
+            ="The Whitehouse"
+          li#theSituationRoom.hidden
+            ="The Situation Room"
+      div#game
+        //Note: The convention for status is the area name + Status
+        div#mineStatus.status.active
+          div.column#trumps
+            h2="Trumps"
+            h3="0/1"
+          div.column#dollaBills
+            h2="Dolla Bills"
+            h3="0"
+          div.column#tacos
+            h2="Tacos"
+            h3="0"
+          div.column#ore
+            h2="Ore"
+            h3="0"
+          div.column.lastColumn#trumpets
+            h2="Trumpets"
+            h3="0"
+        div#villageStatus.status.hidden
+        div#cityStatus.status.hidden
+        div#whitehouseStatus.status.hidden
+        div#situationRoomStatus.status.hidden
+        div#mine.area.active
+          h2="The Mines"
+          div.modulesContainer
+            div.moduleRow
+              div#hatchery.module
+                h3="Trump Hatchery"
+                div#hatcheryButtonHolder.buttonHolder
+                  button(type="button")#hatcheryButton.button
+                    ="Recruit a Trump!"
+                  button(type="button")#hatcheryMoneyButton.button
+                    ="Raise Campaign Funds! (+$1)"
+                  button(type="button")#trumpSlotButton.button
+                    ="Upgrade Trump Barracks! ($100)"
+              div#amMineInc.module
+                h3="Great America Mining"
+                div#amMineButtonHolder.buttonHolder.hidden
+                  button(type="button")#mineOreButton.button
+                    ="Mine an Ore! (10 Left)"
+                  button(type="button")#expandMinesButton.button
+                    ="Expand the mines! ($2500)"
+                  button(type="button")#hireImmigrantsButton.button
+                    ="Hire illegal immigrants! ($10000) (+$0/s)"
+            div.moduleRow
+              div#trumpcoTacoFarm.module
+                h3="TrumpCo TaCo Farm"
+                div#tacoFarmButtonHolder.buttonHolder.hidden
+                  button(type="button")#farmTacoButton.button
+                    ="Farm a taco!"
+                  button(type="button")#Button.button
+                    =""
+                  button(type="button")#Button.button
+                    =""
+              div#trumpetManufactury.module
+                h3="Trumpet Manufactory"
+            div.moduleRow
+              div#deleteSave.module
+                h3="Reset Game"
+                div.buttonHolder
+                  button(type="button")#deleteButton.button
+                    ="Deletes your save!"
+        div#village.area.hidden
+        div#city.area.hidden
+        div#whitehouse.area.hidden
+        div#situationRoom.area.hidden

@@ -1,0 +1,25 @@
+{
+  "name": "trumps-game",
+  "version": "1.0.0",
+  "description": "Game about farming Trumps",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greenitthe/final-project.git"
+  },
+  "author": "Greenitthe (James Clague)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greenitthe/final-project/issues"
+  },
+  "homepage": "https://github.com/greenitthe/final-project#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.7.2",
+    "pug": "^2.0.0-beta6",
+    "socket.io": "^1.7.1"
+  }
+}
