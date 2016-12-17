@@ -63,9 +63,13 @@ $(document).ready(function() {
     if ($("#amMineButtonHolder").hasClass("hidden") && (data.trumps >= 10) && (data.hatchery >= 10)) {
       $("#amMineButtonHolder").removeClass("hidden")
     }
+    if ($("#tacoFarmButtonHolder").hasClass("hidden") && (data.immigrants >= 10) && (data.ore >= 100)) {
+      $("#tacoFarmButtonHolder").removeClass("hidden")
+    }
     $(".status #ore h4").text(data.ore)
     $("#mineOreButton").text("Mine an Ore! (" + data.oreDeposits + " Left)")
-    $("#hireImmigrantsButton").text("Hire illegal immigrants! ($10000) (+$" + data.immigrants * 500 + "/s)")
+    $("#hireImmigrantsButton").text("Hire illegal immigrants! ($10000) (+$" + data.immigrants * 100 + "/s)")
+    $(".status #tacos h4").text(data.tacos)
   })
 
   update();

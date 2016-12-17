@@ -60,170 +60,99 @@ main {
 	background-color:#4d8f2c;
 }
 
-
 /* Layout */
 * {
   padding: 0;
   margin: 0;
   border: 0;
 }
-
 html, body {
   height: 100vh;
   width: 100vw;
 }
-
 body {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
 }
-
 main {
-  padding: 1em;
+  width: 94%;
+  margin: 0 3%;
   font-family: Verdana;
   font-size: 14px;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  width: 85vw;
 }
-
 #headingStuff {
-  display: flex;
-  flex-direction: column;
   text-align: center;
-  padding: 1rem;
+  padding: 0.5rem 0;
 }
-
-#navbar {
-  list-style-type: none;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-
-  display: flex;
-  flex-direction: column;
-}
-
 #navbar ul {
   list-style: none;
-
-  margin: 0 3vw;
 
   display: flex;
   flex-wrap: wrap;
 
   justify-content: center;
-  align-items: stretch;
 }
-
-#navbar li {
-  display: inline-flex;
-}
-
 #navbar li {
   cursor: pointer;
 
-  align-items: flex-start;
-
   padding: 1rem 1rem;
 
-  font-size: 1.4rem;
+  font-size: 24px;
   font-weight: bold;
-  text-align: center;
 }
-
-.hidden {
+/*.hidden {
   display:none !important;
-}
-
+}*/
 .status {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
 
   justify-content: center;
-  width: 91.25vw;
 }
-
 .column {
-  display: flex;
-  flex-direction: column;
   padding: 0.2rem;
 
   text-align: center;
 }
-
+.column h2 {
+  font-size: 24px;
+}
 .column h3 {
-  font-size: 12px;
+  font-size: 16px;
 }
-
-.column h4 {
-  font-size: 8px;
-}
-
 #game {
-  display: flex;
-
-  padding: 0 1rem 1rem 1rem;
-
-  font-size: 10px;
-  flex-direction: column;
+  /*display: flex;
+  flex-direction: column;*/
+  font-size: 20px;
 }
-
 .area {
-  display: flex;
-  flex-direction: column;
-
-  padding: 0.4rem;
+  margin: 0 1rem;
 }
-
 .modulesContainer {
+  /*display: flex;
+  flex-direction: column;*/
+}
+.moduleRow {
   display: flex;
-  flex-direction: row;
-
-  margin: 0.2rem;
-  flex-wrap: wrap;
+  justify-content: center;
 }
-
 .module {
-  padding: 1%;
-  margin: 1%;
-  width: 46%;
+  padding: 0.6rem;
+  margin: 0.4rem;
+  width: 47%;
 }
-
-.module p {
-  padding-left: 0.5rem;
-}
-
 .buttonHolder {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  margin-top: 0.2rem;
+  margin-top: 0.6rem;
 }
-
 .button {
-  display: flex;
-
   cursor: pointer;
-  font-size: 10px;
-  padding: 0.2rem;
+  font-size: 20px;
+  padding: 0.4rem;
   margin: 0.2rem 0;
   text-align: center;
-}
-
-@media (max-width: 961px) {
-  #navbar {
-    padding: 0 0 0rem 0;
-  }
-  #navbar li {
-    font-size: 10px;
-    padding: 0.4rem 0.3rem;
-  }
-  #navbar ul {
-    padding: 0 1.4vw;
-  }
 }

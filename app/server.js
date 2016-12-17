@@ -175,7 +175,8 @@ function updateAUser(data,socket) {
         hatchery: result.areas[0].buildings.hatchery,
         ore: result.areas[0].materials.ore,
         oreDeposits: result.areas[0].buildings.oreDeposits,
-        immigrants: result.areas[0].buildings.immigrants
+        immigrants: result.areas[0].buildings.immigrants,
+        tacos: result.areas[0].materials.tacos
       })
     }
   })
@@ -188,7 +189,7 @@ function perSecond(playerID) {
       return
     }
     var newVal = player
-    newVal.money += (player.areas[0].buildings.immigrants * 500)
+    newVal.money += (player.areas[0].buildings.immigrants * 100)
     updatePlayer(player.playerID, newVal, function (err, player) {})
   })
 }
@@ -271,12 +272,22 @@ io.on('connection', function (socket) {
           return
         }
         if (player.money > 10000) {
-          console.log(player.areas[0].buildings.immigrants)
           var newVal = player
           newVal.areas[0].buildings.immigrants = (player.areas[0].buildings.immigrants + 1)
           newVal.money = (player.money - 10000)
-          updatePlayer(player.playerID, newVal, function(err,player) { console.log("immErr: " + err)})
+          updatePlayer(player.playerID, newVal, function(err,player) {})
         }
+      })
+    }
+    if (data.name === "farmTaco") {
+      getPlayerByID(data.player, function(player) {
+        if (!player) {
+          console.log("No player found! " + player)
+          return
+        }
+        var newVal = player
+        newVal.areas[0].materials.tacos = player.areas[0].materials.tacos + 1
+        updatePlayer(player.playerID, newVal, function (err, player) {})
       })
     }
     if (data.name === "delete") {
